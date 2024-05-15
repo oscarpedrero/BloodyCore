@@ -1,20 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+	  <PackageReadmeFile>..\README.md</PackageReadmeFile>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>BloodyCoreTest</AssemblyName>
     <Description>Test mod for BloodyCore</Description>
     <Version>0.1.7</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>BloodyCoreTest</RootNamespace>
-    <AssemblyVersion>0.1.7.0</AssemblyVersion>
-    <FileVersion>0.1.7.0</FileVersion>
-    <InformationalVersion>0.1.7+1.Branch.main.Sha.a322c9fb3b6e06343e3dfa71f39a27988d15f262</InformationalVersion>
+	  <Nullable>disable</Nullable>
+	  <RestoreSources>
+		  https://api.nuget.org/v3/index.json;
+		  https://nuget.bepinex.dev/v3/index.json;
+	  </RestoreSources>
+	  <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+	  <PackageProjectUrl>https://github.com/oscarpedrero/BloodyCore</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/oscarpedrero/BloodyCore</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+  <ItemGroup>    
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.668" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.Core" Version="6.0.0-be.668" IncludeAssets="compile" />
+	  <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
     <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.0.*" />
     <PackageReference Include="VRising.Bloodstone" Version="0.1.*" />
 	  <PackageReference Include="Costura.Fody" Version="5.7.0">
@@ -27,10 +34,7 @@
 	  </PackageReference>
   </ItemGroup>
 	<ItemGroup>
-		<Reference Include="Bloody.Core">
-			<HintPath>Bloody.Core.dll</HintPath>
-			<Private>true</Private>
-		</Reference>
+		<ProjectReference Include="..\BloodyCore\Bloody.Core.csproj" />
 	</ItemGroup>
 
 	<Target Name="CopyDLLsServer" AfterTargets="Build">
