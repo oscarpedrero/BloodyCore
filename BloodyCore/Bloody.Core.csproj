@@ -16,14 +16,8 @@
 	  <RepositoryType>git</RepositoryType>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <Title>$(AssemblyName)</Title>
-	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageReadmeFile>..\README.md</PackageReadmeFile>
   </PropertyGroup>
-	<ItemGroup>
-		<None Include="README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.668" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.Core" Version="6.0.0-be.668" IncludeAssets="compile" />
@@ -33,7 +27,7 @@
   </ItemGroup>
 	<Target Name="CopyDLLsToBloodyCoreTest" AfterTargets="Build">
 		<Message Text="DLL to BloodyCoreTest" Importance="High" />
-		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyCoreTest\" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="..\BloodyCoreTest\" />
 		<Message Text="DLL Copied OK" Importance="High" />
 	</Target>
 	<Target Name="CopyDLLsToBloodyBoss" AfterTargets="Build">
