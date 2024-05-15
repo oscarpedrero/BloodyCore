@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>BloodyCoreTest</AssemblyName>
+    <Description>Test mod for BloodyCore</Description>
+    <Version>0.1.7</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>BloodyCoreTest</RootNamespace>
+    <AssemblyVersion>0.1.7.0</AssemblyVersion>
+    <FileVersion>0.1.7.0</FileVersion>
+    <InformationalVersion>0.1.7+1.Branch.main.Sha.a322c9fb3b6e06343e3dfa71f39a27988d15f262</InformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.668" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.Core" Version="6.0.0-be.668" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.0.*" />
+    <PackageReference Include="VRising.Bloodstone" Version="0.1.*" />
+	  <PackageReference Include="Costura.Fody" Version="5.7.0">
+		  <!--<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
+		  <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
+	  <PackageReference Include="Fody" Version="6.8.0">
+		  <!-- <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets> -->
+		  <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
+  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Bloody.Core">
+			<HintPath>Bloody.Core.dll</HintPath>
+			<Private>true</Private>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="CopyDLLsServer" AfterTargets="Build">
+		<Message Text="DLL to V Rising Server" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\VRising\VRising_Server\BepInEx\plugins\" />
+		<Message Text="DLL Server Copied OK" Importance="High" />
+	</Target>
+</Project>

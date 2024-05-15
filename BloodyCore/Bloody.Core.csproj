@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <Version>1.0.0</Version>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <LangVersion>latest</LangVersion>
+	  <Nullable>disable</Nullable>
+	  <RestoreSources>
+		  https://api.nuget.org/v3/index.json;
+		  https://nuget.bepinex.dev/v3/index.json;
+	  </RestoreSources>
+	  <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+	  <Description>Framework for Bloody Mods</Description>
+	  <PackageProjectUrl>https://github.com/oscarpedrero/BloodyCore</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/oscarpedrero/BloodyCore</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Title>$(AssemblyName)</Title>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+	<ItemGroup>
+		<None Include="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.668" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.Core" Version="6.0.0-be.668" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.0.*" />
+    <PackageReference Include="VRising.Bloodstone" Version="0.1.*" />
+  </ItemGroup>
+	<Target Name="CopyDLLsToBloodyCoreTest" AfterTargets="Build">
+		<Message Text="DLL to BloodyCoreTest" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyCoreTest\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
+	<Target Name="CopyDLLsToBloodyBoss" AfterTargets="Build">
+		<Message Text="DLL to BloodyBoss" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyBoss\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
+	<Target Name="CopyDLLsBloodyEncounters" AfterTargets="Build">
+		<Message Text="DLL to BloodyEncounters" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyEncounters\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
+</Project>
