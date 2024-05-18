@@ -75,6 +75,7 @@ namespace Bloody.Core
                 _harmony.PatchAll(typeof(TraderPurchasePatch));
                 _harmony.PatchAll(typeof(UnitSpawnerPatch));
                 _harmony.PatchAll(typeof(ActionSchedulerPatch));
+                _harmony.PatchAll(typeof(SaveSystemPatch));
                 OnGameServerDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;
 
             }

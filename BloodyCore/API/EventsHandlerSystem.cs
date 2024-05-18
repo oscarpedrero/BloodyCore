@@ -1,8 +1,5 @@
-﻿using Bloodstone.API;
-using Bloody.Core.Patch.Client;
+﻿using Bloody.Core.Patch.Client;
 using Bloody.Core.Patch.Server;
-using HarmonyLib;
-using Lidgren.Network;
 using ProjectM;
 using Stunlock.Network;
 using System;
@@ -21,6 +18,8 @@ namespace Bloody.Core.API
     public delegate void OnUserDisconnectedEventHandler(ServerBootstrapSystem sender, NetConnectionId netConnectionId, ConnectionStatusChangeReason connectionStatusReason, string extraData);
     public delegate void TraderPurchaseEventHandler(NativeArray<Entity> entities);
     public delegate void OnUnitSpawnedEventHandler(NativeArray<Entity> entities);
+    public delegate void VampireDownedHandler(VampireDownedServerEventSystem sender, NativeArray<Entity> deathEvents);
+    public delegate void SaveWorldEventHandler();
 
     public class EventsHandlerSystem
     {
@@ -34,6 +33,8 @@ namespace Bloody.Core.API
         public static event TraderPurchaseEventHandler OnTraderPurchase;
         public static event OnUnitSpawnedEventHandler OnUnitSpawned;
         public static event RandomizedSpawnChainUpdateSystemEventHandler OnGameFrameUpdate; // TODO: Review why dont run
+        public static event VampireDownedHandler OnVampireDowned;
+        public static event SaveWorldEventHandler OnSaveWorld;
 
         static EventsHandlerSystem()
         {
@@ -54,15 +55,58 @@ namespace Bloody.Core.API
                 TraderPurchasePatch.OnTraderPurchase += OnTraderPurchaseInvoke;
                 UnitSpawnerPatch.OnUnitSpawned += OnUnitSpawnedInvoke;
                 ActionSchedulerPatch.OnGameFrameUpdate += OnGameFrameUpdateInvoke; // TODO: Review why dont run
+                VampireDownedPatch.OnVampireDowned += OnVampireDownedInvoke;
+                SaveSystemPatch.OnSaveWorld += OnSaveWorldInvoke;
             }
+        }
+
+        private static void OnSaveWorldInvoke()
+        {
+            if (OnSaveWorld == null)
+            {
+                return;
+            }
+            foreach (var hook in OnSaveWorld.GetInvocationList())
+            {
+                try
+                {
+                    hook.DynamicInvoke();
+                }
+                catch (Exception e)
+                {
+                    Core.Logger.LogError(e);
+                }
+            }
+            Core.Logger.LogDebug("OnSaveWorld Invoke");
+        }
+
+        private static void OnVampireDownedInvoke(VampireDownedServerEventSystem sender, NativeArray<Entity> deathEvents) // TODO: Review why dont run
+        {
+            if (OnVampireDowned == null)
+            {
+                return;
+            }
+            foreach (var hook in OnVampireDowned.GetInvocationList())
+            {
+                try
+                {
+                    hook.DynamicInvoke(sender, deathEvents);
+                }
+                catch (Exception e)
+                {
+                    Core.Logger.LogError(e);
+                }
+            }
+            Core.Logger.LogDebug("OnVampireDowned Invoke");
         }
 
         private static void OnGameFrameUpdateInvoke() // TODO: Review why dont run
         {
-            if (OnUnitSpawned == null)
+            if (OnGameFrameUpdate == null)
             {
                 return;
             }
+
             foreach (var hook in OnGameFrameUpdate.GetInvocationList())
             {
                 try
@@ -74,7 +118,7 @@ namespace Bloody.Core.API
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogInfo("OnGameFrameUpdate Invoke");
+            Core.Logger.LogDebug("OnGameFrameUpdate Invoke");
         }
 
         private static void OnUnitSpawnedInvoke(NativeArray<Entity> entities)

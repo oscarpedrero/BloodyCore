@@ -40,4 +40,24 @@
 		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyEncounters\" />
 		<Message Text="DLL Copied OK" Importance="High" />
 	</Target>
+	<Target Name="CopyDLLsBloodyRewards" AfterTargets="Build">
+		<Message Text="DLL to BloodyRewards" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyRewards\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
+	<Target Name="CopyDLLsBloodyWallet" AfterTargets="Build">
+		<Message Text="DLL to BloodyWallet" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyWallet\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
+	<Target Name="CopyDLLsBloodyWalletCommands" AfterTargets="Build">
+		<Message Text="DLL to BloodyWalletCommands" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyWalletCommands\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
+	<Target Name="CopyDLLsBloodyMerchant" AfterTargets="Build">
+		<Message Text="DLL to BloodyMerchant" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyMerchant\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
 </Project>

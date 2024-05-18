@@ -36,10 +36,8 @@ namespace Bloody.Core
         {
             try
             {
-                Core.Logger.LogInfo("FromEntity");
                 if (entity.Has<ItemData>())
                 {
-                    Core.Logger.LogInfo("FromEntity 2");
                     return new ItemModel(entity);
                 }
             }
@@ -56,16 +54,11 @@ namespace Bloody.Core
 
         private List<ItemModel> GetItemPrefabs()
         {
-            Core.Logger.LogInfo("GetItemPrefabs");
             var result = new List<ItemModel>();
-            Core.Logger.LogInfo("GetItemPrefabs 2");
             var gameData = VWorld.Server.GetExistingSystemManaged<GameDataSystem>();
-            Core.Logger.LogInfo("GetItemPrefabs 3");
             foreach (var prefabEntity in gameData.ItemHashLookupMap.GetValueArray(Allocator.Temp))
             {
-                Core.Logger.LogInfo("GetItemPrefabs 4");
                 var itemModel = FromEntity(prefabEntity.Entity);
-                Core.Logger.LogInfo("GetItemPrefabs 5");
                 if (itemModel != null)
                 {
                     result.Add(itemModel);

@@ -6,6 +6,10 @@
         {
             return $"<color={hexColor}>{text}</color>";
         }
+        public static string White(string text)
+        {
+            return Color("#FFFFFF", text);
+        }
         public static string Red(string text)
         {
             return Color("#E90000", text);

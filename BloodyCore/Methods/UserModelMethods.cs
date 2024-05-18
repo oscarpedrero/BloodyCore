@@ -11,6 +11,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Bloody.Core.Models;
 using Bloody.Core.Utils;
+using Bloody.Core.API;
 
 namespace Bloody.Core.Methods
 {
@@ -35,7 +36,7 @@ namespace Bloody.Core.Methods
 
             unsafe
             {
-                var bytes = stackalloc byte[Marshal.SizeOf<FakeNull>()];
+                /*var bytes = stackalloc byte[Marshal.SizeOf<FakeNull>()];
                 var bytePtr = new IntPtr(bytes);
                 Marshal.StructureToPtr(new FakeNull { value = 0, has_value = true }, bytePtr, false);
                 var boxedBytePtr = IntPtr.Subtract(bytePtr, 0x10);
@@ -49,6 +50,11 @@ namespace Bloody.Core.Methods
                     return true;
                 }
 
+                return false;*/
+                if(UserSystem.TryAddInventoryItemOrDrop(userModel.Entity, itemGuid, amount))
+                {
+                    return true;
+                }
                 return false;
             }
         }
