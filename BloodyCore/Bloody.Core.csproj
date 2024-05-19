@@ -60,4 +60,9 @@
 		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyMerchant\" />
 		<Message Text="DLL Copied OK" Importance="High" />
 	</Target>
+	<Target Name="CopyDLLsBloodyPoints" AfterTargets="Build">
+		<Message Text="DLL to BloodyPoints" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="E:\MODS\BloodyPoints\" />
+		<Message Text="DLL Copied OK" Importance="High" />
+	</Target>
 </Project>

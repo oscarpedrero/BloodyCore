@@ -13,7 +13,6 @@ namespace Bloody.Core.API
     public delegate void DeathEventHandler(DeathEventListenerSystem sender, NativeArray<DeathEvent> deathEvents);
     public delegate void DeathVbloodEventHandler(VBloodSystem sender, NativeList<VBloodConsumed> deathEvents);
     public delegate void GameBootstrapStartEventHandler();
-    public delegate void RandomizedSpawnChainUpdateSystemEventHandler();
     public delegate void OnUserConnectedEventHandler(ServerBootstrapSystem sender, NetConnectionId netConnectionId);
     public delegate void OnUserDisconnectedEventHandler(ServerBootstrapSystem sender, NetConnectionId netConnectionId, ConnectionStatusChangeReason connectionStatusReason, string extraData);
     public delegate void TraderPurchaseEventHandler(NativeArray<Entity> entities);
@@ -32,7 +31,6 @@ namespace Bloody.Core.API
         public static event OnUserDisconnectedEventHandler OnUserDisconnected;
         public static event TraderPurchaseEventHandler OnTraderPurchase;
         public static event OnUnitSpawnedEventHandler OnUnitSpawned;
-        public static event RandomizedSpawnChainUpdateSystemEventHandler OnGameFrameUpdate; // TODO: Review why dont run
         public static event VampireDownedHandler OnVampireDowned;
         public static event SaveWorldEventHandler OnSaveWorld;
 
@@ -54,7 +52,6 @@ namespace Bloody.Core.API
                 ServerBootstrapPatch.OnUserDisconnected += OnUserDisconnectedInvoke;
                 TraderPurchasePatch.OnTraderPurchase += OnTraderPurchaseInvoke;
                 UnitSpawnerPatch.OnUnitSpawned += OnUnitSpawnedInvoke;
-                ActionSchedulerPatch.OnGameFrameUpdate += OnGameFrameUpdateInvoke; // TODO: Review why dont run
                 VampireDownedPatch.OnVampireDowned += OnVampireDownedInvoke;
                 SaveSystemPatch.OnSaveWorld += OnSaveWorldInvoke;
             }
@@ -98,27 +95,6 @@ namespace Bloody.Core.API
                 }
             }
             Core.Logger.LogDebug("OnVampireDowned Invoke");
-        }
-
-        private static void OnGameFrameUpdateInvoke() // TODO: Review why dont run
-        {
-            if (OnGameFrameUpdate == null)
-            {
-                return;
-            }
-
-            foreach (var hook in OnGameFrameUpdate.GetInvocationList())
-            {
-                try
-                {
-                    hook.DynamicInvoke();
-                }
-                catch (Exception e)
-                {
-                    Core.Logger.LogError(e);
-                }
-            }
-            Core.Logger.LogDebug("OnGameFrameUpdate Invoke");
         }
 
         private static void OnUnitSpawnedInvoke(NativeArray<Entity> entities)
