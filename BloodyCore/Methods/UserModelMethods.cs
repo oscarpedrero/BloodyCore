@@ -9,9 +9,9 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using Bloody.Core.Models;
-using Bloody.Core.Utils;
-using Bloody.Core.API;
+using Bloody.Core.API.v1;
+using Bloody.Core.Models.v1;
+using Bloody.Core.Utils.v1;
 
 namespace Bloody.Core.Methods
 {

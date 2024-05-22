@@ -104,7 +104,7 @@ public static class ECSExtensions
     public static string LookupName(this PrefabGUID prefabGuid)
 	{
 		return (Core.SystemsCore.PrefabCollectionSystem.PrefabGuidToNameDictionary.ContainsKey(prefabGuid)
-			? Core.SystemsCore.PrefabCollectionSystem.PrefabGuidToNameDictionary[prefabGuid] + " " + prefabGuid : "GUID Not Found").ToString();
+			? Core.SystemsCore.PrefabCollectionSystem.PrefabGuidToNameDictionary[prefabGuid]: "GUID Not Found").ToString();
 	}
 }
 #pragma warning restore CS8500

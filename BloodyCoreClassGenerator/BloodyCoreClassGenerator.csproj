@@ -25,10 +25,10 @@
 	  <PackageReference Include="VRising.Bloodstone" Version="0.1.*" />
   </ItemGroup>
 
-  <Target Name="CopyDLLs" AfterTargets="Build">
+ <!--<Target Name="CopyDLLs" AfterTargets="Build">
     <Message Text="Executing CopyDLLs task" Importance="High" />
     <Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)$(ProjectName).pdb" DestinationFolder="$(ServerPath)\BepinEx\plugins" />
     <Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)$(ProjectName).pdb" DestinationFolder="$(ClientPath)\BepinEx\plugins" />
     <Message Text="Copied build files" Importance="High" />
-  </Target>
+  </Target>-->
 </Project>

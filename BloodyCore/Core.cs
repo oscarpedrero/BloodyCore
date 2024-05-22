@@ -1,54 +1,53 @@
-﻿using BepInEx.Logging;
-using Bloody.Core.API;
-using Bloody.Core.Helper;
-using Bloody.Core.Patch.Client;
-using Bloody.Core.Patch.Server;
+﻿using BepInEx;
+using BepInEx.Configuration;
+using BepInEx.Logging;
+using BepInEx.Unity.IL2CPP;
+using Bloodstone;
+using Bloodstone.API;
+using Bloody.Core.API.v1;
+using Bloody.Core.Helper.v1;
+using Bloody.Core.Patch.v1.Client;
+using Bloody.Core.Patch.v1.Server;
 using HarmonyLib;
-using ProjectM;
 using System;
-using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
-using static ProjectM.Metrics;
 
 namespace Bloody.Core
 {
-
-
-
-    public static class Core
+    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+    [BepInDependency("gg.deca.Bloodstone")]
+    public class Core: BasePlugin
     {
-
-        static Core()
-        {
-            Create();
-        }
+        internal static Core Instance { get; private set; }
 
         private static Harmony _harmony;
 
         private static bool _initialized;
-        private static bool _worldDataInitialized;
+        internal static bool _worldDataInitialized;
 
         public static SystemsCore SystemsCore => _worldDataInitialized ? SystemsCore.Instance : throw new InvalidOperationException(NotInitializedError);
-        public static Users Users => _worldDataInitialized ? Users.Instance : throw new InvalidOperationException(NotInitializedError);
-        public static Items Items => _worldDataInitialized ? Items.Instance : throw new InvalidOperationException(NotInitializedError);
-        public static Npcs Npcs => _worldDataInitialized ? Npcs.Instance : throw new InvalidOperationException(NotInitializedError);
 
-        private const string NotInitializedError = "Core is not initialized";
+        internal const string NotInitializedError = "Core is not initialized";
 
         public static bool IsServer = Application.productName == "VRisingServer";
         public static bool IsClient = Application.productName == "VRising";
 
         internal static ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("Bloody.Core");
 
-        internal static Helper.Logger Logger = new(Log);
+        internal static Helper.v1.Logger Logger = new(Log);
 
         private static World _world;
         public static World World => _world ?? throw new InvalidOperationException(NotInitializedError);
 
         public static EventsHandlerSystem EventHandlerSystem;
 
-        private static void Create()
+        public Core() : base()
+        {
+            Instance = this;
+        }
+
+        public override void Load()
         {
             if (_initialized)
             {
@@ -60,28 +59,50 @@ namespace Bloody.Core
 
             if (IsClient)
             {
-                _harmony.PatchAll(typeof(OnGameClientDataInitializedPatch));
-                OnGameClientDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;
-                OnGameClientDataInitializedPatch.OnCoreDestroyed += OnCoreDestroyed;
+                
             }
 
             if (IsServer)
             {
-                _harmony.PatchAll(typeof(OnGameServerDataInitializedPatch));
-                _harmony.PatchAll(typeof(DeathPatch));
-                _harmony.PatchAll(typeof(DeathVBloodPatch));
-                _harmony.PatchAll(typeof(GameBootstrapPatch));
-                _harmony.PatchAll(typeof(ServerBootstrapPatch));
-                _harmony.PatchAll(typeof(TraderPurchasePatch));
-                _harmony.PatchAll(typeof(UnitSpawnerPatch));
-                _harmony.PatchAll(typeof(SaveSystemPatch));
-                OnGameServerDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;
-
+                
             }
 
-            EventHandlerSystem = new EventsHandlerSystem();
+            Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} is loaded!");
+        }
 
-            Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} version {MyPluginInfo.PLUGIN_VERSION} is loaded!");
+        public static void InitBloodyCore(string version = "v1")
+        { 
+            if(version == "v1")
+            {
+                Logger.LogInfo($"InitBloodyCore {version}!");
+                if (IsClient)
+                {
+                    _harmony.PatchAll(typeof(OnGameClientDataInitializedPatch));
+                    OnGameClientDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;
+                    OnGameClientDataInitializedPatch.OnCoreDestroyed += OnCoreDestroyed;
+                }
+
+                if (IsServer)
+                {
+                    Logger.LogInfo($"InitBloodyCore is Server!");
+                    _harmony.PatchAll(typeof(DeathPatch));
+                    _harmony.PatchAll(typeof(DeathVBloodPatch));
+                    _harmony.PatchAll(typeof(GameBootstrapPatch));
+                    _harmony.PatchAll(typeof(ServerBootstrapPatch));
+                    _harmony.PatchAll(typeof(TraderPurchasePatch));
+                    _harmony.PatchAll(typeof(UnitSpawnerPatch));
+                    _harmony.PatchAll(typeof(SaveSystemPatch));
+
+                    _harmony.PatchAll(typeof(OnGameServerDataInitializedPatch));
+                    OnGameServerDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;
+
+                }
+
+                EventHandlerSystem = new EventsHandlerSystem();
+            }
+            
+
+            Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} started correctly in version {version}!");
 
         }
 
@@ -99,6 +120,7 @@ namespace Bloody.Core
 
         internal static void OnCoreInitialized(World world)
         {
+            Logger.LogInfo($"OnCoreInitialized is loaded!");
             _world = world;
             _worldDataInitialized = true;
         }
