@@ -1,4 +1,4 @@
-# BloodyCore
+# BloodyCore - WIP, use it at your own risk.
 
 Framework for Bloody mods for VRising by Trodi - Framework in its beta version, use it at your own risk since it is still WIP
 
@@ -18,6 +18,20 @@ Framework for Bloody mods for VRising by Trodi - Framework in its beta version, 
 `1.0.0`
 - First version of Core
 </details>
+
+## Installation
+
+Install the NuGet package `Bloody.Core`
+
+https://www.nuget.org/packages/Bloody.Core/
+
+See the sample project here: 
+
+https://github.com/oscarpedrero/BloodyCore/tree/master/BloodyCoreTest
+
+## Usage
+
+Available soon - WIP
 
 # Support
 
