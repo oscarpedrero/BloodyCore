@@ -1,5 +1,5 @@
-﻿using Bloody.Core.Patch.v1.Client;
-using Bloody.Core.Patch.v1.Server;
+﻿using Bloody.Core.Patch.Client;
+using Bloody.Core.Patch.Server;
 using ProjectM;
 using Stunlock.Network;
 using System;

@@ -2,6 +2,9 @@
 
 Framework for Bloody mods for VRising by Trodi - Framework in its beta version, use it at your own risk since it is still WIP
 
+`1.2.2`
+- Patch loading system changed because it caused incompatibilities
+
 `1.2.1`
 - Fixed errors with Item models
 

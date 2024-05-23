@@ -4,7 +4,7 @@ using HarmonyLib;
 using ProjectM;
 using System;
 
-namespace Bloody.Core.Patch.v1.Server
+namespace Bloody.Core.Patch.Server
 {
     internal static class OnGameServerDataInitializedPatch
     {

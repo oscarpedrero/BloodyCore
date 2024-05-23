@@ -8,7 +8,7 @@ using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Bloody.Core.Patch.v1.Server
+namespace Bloody.Core.Patch.Server
 {
 
     [HarmonyPatch]

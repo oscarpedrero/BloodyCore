@@ -4,7 +4,7 @@ using ProjectM;
 using System;
 using Unity.Collections;
 
-namespace Bloody.Core.Patch.v1.Server
+namespace Bloody.Core.Patch.Server
 {
 
 

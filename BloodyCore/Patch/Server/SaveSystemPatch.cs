@@ -2,7 +2,7 @@
 using HarmonyLib;
 using ProjectM;
 
-namespace Bloody.Core.Patch.v1.Server
+namespace Bloody.Core.Patch.Server
 {
     [HarmonyPatch]
     internal class SaveSystemPatch

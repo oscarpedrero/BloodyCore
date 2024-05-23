@@ -5,7 +5,7 @@ using Unity.Collections;
 using System;
 using Bloody.Core.API.v1;
 
-namespace Bloody.Core.Patch.v1.Server
+namespace Bloody.Core.Patch.Server
 {
 
     [HarmonyPatch]

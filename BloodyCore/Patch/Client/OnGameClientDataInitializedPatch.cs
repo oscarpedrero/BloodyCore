@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bloody.Core.Patch.v1.Client
+namespace Bloody.Core.Patch.Client
 {
     internal static class OnGameClientDataInitializedPatch
     {

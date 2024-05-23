@@ -23,7 +23,7 @@ namespace Bloody.Core.Helper.v1
             if (_enabled)
             {
                 var date = DateTime.Now;
-                _logger.Log(logLevel, $"[{date.ToString("HH:mm:ss")}] [{MyPluginInfo.PLUGIN_VERSION}] {message}");
+                _logger.Log(logLevel, $"[{date.ToString("HH:mm:ss")}] {message}");
             }
 
         }

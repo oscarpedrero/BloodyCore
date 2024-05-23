@@ -3,7 +3,7 @@ using HarmonyLib;
 using ProjectM;
 using Unity.Collections;
 
-namespace Bloody.Core.Patch.v1.Server
+namespace Bloody.Core.Patch.Server
 {
     [HarmonyPatch]
     internal class VampireDownedPatch

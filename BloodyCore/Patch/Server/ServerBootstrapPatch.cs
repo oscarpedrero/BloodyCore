@@ -4,7 +4,7 @@ using ProjectM;
 using Stunlock.Network;
 using System;
 
-namespace Bloody.Core.Patch.v1.Server
+namespace Bloody.Core.Patch.Server
 {
 
 

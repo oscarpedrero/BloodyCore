@@ -25,8 +25,6 @@ public class Plugin : BasePlugin
     public override void Load()
     {
 
-        Core.InitBloodyCore();
-
         Logger = new(Log);
         // Plugin startup logic
         Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} version {MyPluginInfo.PLUGIN_VERSION} is loaded!");
