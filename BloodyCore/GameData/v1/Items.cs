@@ -7,7 +7,6 @@ using Stunlock.Core;
 using Unity.Entities;
 using Unity.Collections;
 using Bloody.Core.Models.v1;
-using static ProjectM.CollisionDetectionSingleton.Data;
 
 namespace Bloody.Core.GameData.v1
 {
@@ -22,7 +21,7 @@ namespace Bloody.Core.GameData.v1
         {
             try
             {
-                var entity =  Core.SystemsCore.PrefabCollectionSystem.PrefabLookupMap[prefabGuid];
+                var entity =  Core.SystemsCore.PrefabCollectionSystem._PrefabLookupMap[prefabGuid];
                 return FromEntity(entity);
             }
             catch (Exception ex)
