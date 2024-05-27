@@ -1,3 +1,5 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K8ENRQY)
+
 # BloodyCore - WIP, use it at your own risk.
 
 Framework for Bloody mods for VRising by Trodi - Framework in its beta version, use it at your own risk since it is still WIP
