@@ -1,6 +1,18 @@
 # BloodyCore
 
-Framework for Bloody mods for VRising by Trodi - Framework in its beta version, use it at your own risk since it is still WIP
+Bloody.Core a help library for mod development. It must be installed if any mod uses it.
+
+# Requirements
+
+1. [BepInEx](https://thunderstore.io/c/v-rising/p/BepInEx/BepInExPack_V_Rising/)
+2. [Bloodstone](https://thunderstore.io/c/v-rising/p/deca/Bloodstone/)
+
+# Installation
+Install BepInEx.
+Extract Bloody.Core.dll into (VRising folder)/BepInEx/plugins.
+
+<details>
+<summary>Changelog</summary>
 
 `1.2.2`
 - Patch loading system changed because it caused incompatibilities
@@ -14,6 +26,17 @@ Framework for Bloody mods for VRising by Trodi - Framework in its beta version, 
 
 `1.0.0`
 - First version of Core
+</details>
+
+## Installation
+
+Install the NuGet package `Bloody.Core`
+
+https://www.nuget.org/packages/Bloody.Core/
+
+See the sample project here: 
+
+https://github.com/oscarpedrero/BloodyCore/tree/master/BloodyCoreTest
 
 # Support
 
@@ -22,3 +45,7 @@ Ping Trodi for support [V Rising Mod Community](https://discord.gg/vrisingmods)
 # Credits
 
 [V Rising Mod Community](https://discord.gg/vrisingmods) is the best community of mods for V Rising.
+
+# Support this project
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K8ENRQY)

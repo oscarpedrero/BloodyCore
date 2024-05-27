@@ -1,0 +1,10 @@
+﻿{
+  "name": "BloodyCore",
+  "version_number": "1.2.2",
+  "website_url": "https://github.com/oscarpedrero/BloodyCore",
+  "description": "Bloody.Core a help library for mod development. It must be installed if any mod uses it.",
+  "dependencies": [
+    "BepInEx-BepInExPack_V_Rising-1.691.3",
+    "deca-Bloodstone-0.2.2"
+  ]
+}
