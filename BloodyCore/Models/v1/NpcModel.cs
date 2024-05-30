@@ -10,7 +10,7 @@ namespace Bloody.Core.Models.v1
 {
     public partial class NpcModel : EntityModel
     {
-        private readonly HashSet<UnitCategory> _npcCategories = new()
+        private static readonly HashSet<UnitCategory> _npcCategories = new()
         {
             UnitCategory.Beast,
             UnitCategory.Demon,
@@ -28,9 +28,9 @@ namespace Bloody.Core.Models.v1
             }
         }
 
-#pragma warning disable CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
+#pragma warning disable CS0108 
         public PrefabGUID PrefabGUID => Internals.PrefabGUID ?? new PrefabGUID();
-#pragma warning restore CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
+#pragma warning restore CS0108 
         public bool IsDead => Internals.DeathBuff.HasValue;
         public float LifeTime => Internals.LifeTime?.Duration ?? 0;
         public float3 Position => Internals.LocalToWorld?.Position ?? new float3();

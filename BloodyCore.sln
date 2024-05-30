@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{59BA178A-0D04-4204-A562-1DA79E37889C}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		thunderstore.toml = thunderstore.toml
 	EndProjectSection
 EndProject
 Global
