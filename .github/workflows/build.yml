@@ -38,7 +38,7 @@ jobs:
           additionalArguments: '/updateprojectfiles /overrideconfig "mode=Mainline"'
 
       - name: Build (Release)
-        run: dotnet build .\BloodyCore --configuration Release -p:Version=$GitVersion_SemVer
+        run: dotnet build ./BloodyCore --configuration Release -p:Version=$GitVersion_SemVer
         
       - name: GH Release
         uses: softprops/action-gh-release@v1
