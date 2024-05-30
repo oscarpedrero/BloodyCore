@@ -14,9 +14,6 @@ Extract Bloody.Core.dll into (VRising folder)/BepInEx/plugins.
 <details>
 <summary>Changelog</summary>
 
-`1.2.3`
-- Patch loading system changed because it caused incompatibilities
-
 `1.2.2`
 - Patch loading system changed because it caused incompatibilities
 
