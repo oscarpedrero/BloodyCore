@@ -1,4 +1,4 @@
-﻿using Bloody.Core.Models.v1.CustomEvents;
+﻿/*using Bloody.Core.Models.v1.CustomEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,3 +81,4 @@ namespace Bloody.Core.API.v1
 
     }
 }
+*/
