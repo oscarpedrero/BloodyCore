@@ -6,7 +6,7 @@ namespace = "Trodi"
 name = "BloodyCore"
 versionNumber = "1.2.2"
 description = "Bloody.Core a help library for mod development. It must be installed if any mod uses it."
-websiteUrl = "https://github.com/oscarpedrero/BloodyNotify"
+websiteUrl = "https://github.com/oscarpedrero/BloodyCore"
 containsNsfwContent = false
 
 [package.dependencies]
