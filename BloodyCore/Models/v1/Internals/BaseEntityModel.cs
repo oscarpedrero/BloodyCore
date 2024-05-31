@@ -1101,7 +1101,6 @@ namespace Bloody.Core.Models.v1.Internals
         public ProjectM.CastleBuilding.CastleTerritory? CastleTerritory => _world.EntityManager.TryGetComponentDataInternal<ProjectM.CastleBuilding.CastleTerritory>(_entity, out var value) ? value : null;
         public List<ProjectM.CastleBuilding.CastleTerritoryBlocks> CastleTerritoryBlocks => _world.EntityManager.GetBufferInternal<ProjectM.CastleBuilding.CastleTerritoryBlocks>(_entity);
         public List<ProjectM.CastleBuilding.CastleTerritoryTiles> CastleTerritoryTiles => _world.EntityManager.GetBufferInternal<ProjectM.CastleBuilding.CastleTerritoryTiles>(_entity);
-        public ProjectM.ManagedItemData ManagedItemData => _world.EntityManager.TryGetComponentDataInternal<ProjectM.ManagedItemData>(_entity, out var value) ? value : null;
         public ProjectM.ItemDataDropGroup? ItemDataDropGroup => _world.EntityManager.TryGetComponentDataInternal<ProjectM.ItemDataDropGroup>(_entity, out var value) ? value : null;
         public List<ProjectM.ItemDataDropGroupBuffer> ItemDataDropGroupBuffers => _world.EntityManager.GetBufferInternal<ProjectM.ItemDataDropGroupBuffer>(_entity);
         public ProjectM.Passive? Passive => _world.EntityManager.TryGetComponentDataInternal<ProjectM.Passive>(_entity, out var value) ? value : null;
