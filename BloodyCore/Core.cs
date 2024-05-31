@@ -66,6 +66,7 @@ namespace Bloody.Core
             {
                 Logger.LogInfo($"Load Systems for Server");
                 _harmony.PatchAll(typeof(DeathPatch));
+                _harmony.PatchAll(typeof(DealDamageSystemPatch));
                 _harmony.PatchAll(typeof(DeathVBloodPatch));
                 _harmony.PatchAll(typeof(GameBootstrapPatch));
                 _harmony.PatchAll(typeof(ServerBootstrapPatch));

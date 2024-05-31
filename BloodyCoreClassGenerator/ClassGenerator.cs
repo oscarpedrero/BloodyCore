@@ -12,7 +12,7 @@ namespace Bloody.Core.ClassGenerator
 {
     internal static class ClassGenerator
     {
-        private const string ModelsFolder = @"E:\MODS\BloodyCore\Models\Internals";
+        private const string ModelsFolder = @"E:\MODS\BloodyCore\BloodyCore\Models\Internals";
 
         public static void GenerateClasses()
         {
@@ -90,7 +90,7 @@ namespace Bloody.Core.ClassGenerator
             builder = new StringBuilder($@"using System.Collections.Generic;
 using Unity.Entities;
 
-namespace VRising.GameData.Models.Internals
+namespace Bloody.Core.Models.Internals
 {{
     public class {className}
     {{
@@ -110,7 +110,7 @@ namespace VRising.GameData.Models.Internals
             builder = new StringBuilder($@"using System.Collections.Generic;
 using Unity.Entities;
 
-namespace VRising.GameData.Models.Internals
+namespace Bloody.Core.Models.Internals
 {{
     public class {className}
     {{

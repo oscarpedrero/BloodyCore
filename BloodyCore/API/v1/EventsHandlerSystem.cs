@@ -1,6 +1,7 @@
 ﻿using Bloody.Core.Patch.Client;
 using Bloody.Core.Patch.Server;
 using ProjectM;
+using ProjectM.Gameplay.Systems;
 using Stunlock.Network;
 using System;
 using Unity.Collections;
@@ -11,6 +12,7 @@ namespace Bloody.Core.API.v1
     public delegate void OnGameDataInitializedEventHandler(World world);
     public delegate void OnGameDataDestroyedEventHandler();
     public delegate void DeathEventHandler(DeathEventListenerSystem sender, NativeArray<DeathEvent> deathEvents);
+    public delegate void DamageEventHandler(DealDamageSystem sender, NativeArray<DamageTakenEvent> damageEvents);
     public delegate void DeathVbloodEventHandler(VBloodSystem sender, NativeList<VBloodConsumed> deathEvents);
     public delegate void GameBootstrapStartEventHandler();
     public delegate void OnUserConnectedEventHandler(ServerBootstrapSystem sender, NetConnectionId netConnectionId);
@@ -26,6 +28,7 @@ namespace Bloody.Core.API.v1
         public static event OnGameDataDestroyedEventHandler OnDestroy;
         public static event DeathVbloodEventHandler OnDeathVBlood;
         public static event DeathEventHandler OnDeath;
+        public static event DamageEventHandler OnDamage;
         public static event GameBootstrapStartEventHandler OnStart;
         public static event OnUserConnectedEventHandler OnUserConnected;
         public static event OnUserDisconnectedEventHandler OnUserDisconnected;
@@ -47,6 +50,7 @@ namespace Bloody.Core.API.v1
                 OnGameServerDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;
                 DeathVBloodPatch.OnDeathVBlood += OnDeathVBloodInvoke;
                 DeathPatch.OnDeath += OnDeathInvoke;
+                DealDamageSystemPatch.OnDamage += OnDamageInvoke;
                 GameBootstrapPatch.OnStart += OnStartInvoke;
                 ServerBootstrapPatch.OnUserConnected += OnUserConnectedInvoke;
                 ServerBootstrapPatch.OnUserDisconnected += OnUserDisconnectedInvoke;
@@ -55,6 +59,26 @@ namespace Bloody.Core.API.v1
                 VampireDownedPatch.OnVampireDowned += OnVampireDownedInvoke;
                 SaveSystemPatch.OnSaveWorld += OnSaveWorldInvoke;
             }
+        }
+
+        private static void OnDamageInvoke(DealDamageSystem sender, NativeArray<DamageTakenEvent> damageEvents)
+        {
+            if (OnDamage == null)
+            {
+                return;
+            }
+            foreach (var hook in OnDamage.GetInvocationList())
+            {
+                try
+                {
+                    hook.DynamicInvoke();
+                }
+                catch (Exception e)
+                {
+                    Core.Logger.LogError(e);
+                }
+            }
+            Core.Logger.LogDebug("OnDamage Invoke");
         }
 
         private static void OnSaveWorldInvoke()

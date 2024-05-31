@@ -481,7 +481,6 @@ namespace Bloody.Core.Models.v1.Internals
         public List<ProjectM.ChangeBloodOnGameplayEvent> ChangeBloodOnGameplayEvents => _world.EntityManager.GetBufferInternal<ProjectM.ChangeBloodOnGameplayEvent>(_entity);
         public List<ProjectM.UnlockTrophyOnGameplayEvent> UnlockTrophyOnGameplayEvents => _world.EntityManager.GetBufferInternal<ProjectM.UnlockTrophyOnGameplayEvent>(_entity);
         public ProjectM.AggroConsumer? AggroConsumer => _world.EntityManager.TryGetComponentDataInternal<ProjectM.AggroConsumer>(_entity, out var value) ? value : null;
-        public ProjectM.Pathfinding.LastPathRequest? LastPathRequest => _world.EntityManager.TryGetComponentDataInternal<ProjectM.Pathfinding.LastPathRequest>(_entity, out var value) ? value : null;
         public ProjectM.OpenDoors? OpenDoors => _world.EntityManager.TryGetComponentDataInternal<ProjectM.OpenDoors>(_entity, out var value) ? value : null;
         public ProjectM.GainAggroByAlert? GainAggroByAlert => _world.EntityManager.TryGetComponentDataInternal<ProjectM.GainAggroByAlert>(_entity, out var value) ? value : null;
         public ProjectM.GainAggroByVicinity? GainAggroByVicinity => _world.EntityManager.TryGetComponentDataInternal<ProjectM.GainAggroByVicinity>(_entity, out var value) ? value : null;
@@ -491,17 +490,12 @@ namespace Bloody.Core.Models.v1.Internals
         public ProjectM.AggroDamageHistoryConfig? AggroDamageHistoryConfig => _world.EntityManager.TryGetComponentDataInternal<ProjectM.AggroDamageHistoryConfig>(_entity, out var value) ? value : null;
         public ProjectM.ServantPower? ServantPower => _world.EntityManager.TryGetComponentDataInternal<ProjectM.ServantPower>(_entity, out var value) ? value : null;
         public ProjectM.ServantPowerConstants? ServantPowerConstants => _world.EntityManager.TryGetComponentDataInternal<ProjectM.ServantPowerConstants>(_entity, out var value) ? value : null;
-        public ProjectM.Pathfinding.Pathfinder? Pathfinder => _world.EntityManager.TryGetComponentDataInternal<ProjectM.Pathfinding.Pathfinder>(_entity, out var value) ? value : null;
         public List<ProjectM.OpenDoorsBuffer> OpenDoorsBuffers => _world.EntityManager.GetBufferInternal<ProjectM.OpenDoorsBuffer>(_entity);
         public List<ProjectM.AggroBuffer> AggroBuffers => _world.EntityManager.GetBufferInternal<ProjectM.AggroBuffer>(_entity);
         public List<ProjectM.AlertBuffer> AlertBuffers => _world.EntityManager.GetBufferInternal<ProjectM.AlertBuffer>(_entity);
         public List<ProjectM.AggroCandidateBufferElement> AggroCandidateBufferElements => _world.EntityManager.GetBufferInternal<ProjectM.AggroCandidateBufferElement>(_entity);
         public List<ProjectM.AggroDamageHistoryBufferElement> AggroDamageHistoryBufferElements => _world.EntityManager.GetBufferInternal<ProjectM.AggroDamageHistoryBufferElement>(_entity);
         public List<ProjectM.ExternalAggroBufferElement> ExternalAggroBufferElements => _world.EntityManager.GetBufferInternal<ProjectM.ExternalAggroBufferElement>(_entity);
-        public List<ProjectM.Pathfinding.PathBuffer> PathBuffers => _world.EntityManager.GetBufferInternal<ProjectM.Pathfinding.PathBuffer>(_entity);
-        public List<ProjectM.Pathfinding.PathRequestFilledSegmentBuffer> PathRequestFilledSegmentBuffers => _world.EntityManager.GetBufferInternal<ProjectM.Pathfinding.PathRequestFilledSegmentBuffer>(_entity);
-        public List<ProjectM.Pathfinding.PathRequestSolveDebugBuffer> PathRequestSolveDebugBuffers => _world.EntityManager.GetBufferInternal<ProjectM.Pathfinding.PathRequestSolveDebugBuffer>(_entity);
-        public List<ProjectM.Pathfinding.UnsmoothedPathBuffer> UnsmoothedPathBuffers => _world.EntityManager.GetBufferInternal<ProjectM.Pathfinding.UnsmoothedPathBuffer>(_entity);
         public ProjectM.Gameplay.Scripting.Script_SetAbilityCooldownOnGameplayEvent_DataServer? Script_SetAbilityCooldownOnGameplayEvent_DataServer => _world.EntityManager.TryGetComponentDataInternal<ProjectM.Gameplay.Scripting.Script_SetAbilityCooldownOnGameplayEvent_DataServer>(_entity, out var value) ? value : null;
         public List<ProjectM.PlayImpactOnGameplayEvent> PlayImpactOnGameplayEvents => _world.EntityManager.GetBufferInternal<ProjectM.PlayImpactOnGameplayEvent>(_entity);
         public ProjectM.OffsetTranslationOnSpawn? OffsetTranslationOnSpawn => _world.EntityManager.TryGetComponentDataInternal<ProjectM.OffsetTranslationOnSpawn>(_entity, out var value) ? value : null;
@@ -678,7 +672,6 @@ namespace Bloody.Core.Models.v1.Internals
         public ProjectM.Behaviours.BehaviourTreeBinding? BehaviourTreeBinding => _world.EntityManager.TryGetComponentDataInternal<ProjectM.Behaviours.BehaviourTreeBinding>(_entity, out var value) ? value : null;
         public ProjectM.Behaviours.BehaviourTreeState? BehaviourTreeState => _world.EntityManager.TryGetComponentDataInternal<ProjectM.Behaviours.BehaviourTreeState>(_entity, out var value) ? value : null;
         public ProjectM.Behaviours.BehaviourTreeStateMetadata? BehaviourTreeStateMetadata => _world.EntityManager.TryGetComponentDataInternal<ProjectM.Behaviours.BehaviourTreeStateMetadata>(_entity, out var value) ? value : null;
-        public ProjectM.AiDebugDraw? AiDebugDraw => _world.EntityManager.TryGetComponentDataInternal<ProjectM.AiDebugDraw>(_entity, out var value) ? value : null;
         public List<ProjectM.AbilityGroupSlotBuffer> AbilityGroupSlotBuffers => _world.EntityManager.GetBufferInternal<ProjectM.AbilityGroupSlotBuffer>(_entity);
         public List<ProjectM.EntitiesInView_Server> EntitiesInView_Server => _world.EntityManager.GetBufferInternal<ProjectM.EntitiesInView_Server>(_entity);
         public List<ProjectM.Behaviours.BehaviourTreeStateActiveBuffsBuffer> BehaviourTreeStateActiveBuffsBuffers => _world.EntityManager.GetBufferInternal<ProjectM.Behaviours.BehaviourTreeStateActiveBuffsBuffer>(_entity);
