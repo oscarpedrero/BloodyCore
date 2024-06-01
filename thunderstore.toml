@@ -14,8 +14,8 @@ BepInEx-BepInExPack_V_Rising = "1.668.5"
 deca-Bloodstone = "0.2.2"
 
 [build]
-icon = "./icon.png"
-readme = "./README.md"
+icon = "icon.png"
+readme = "README.md"
 outdir = "./build"
 
 [[build.copy]]
