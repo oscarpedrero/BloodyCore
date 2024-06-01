@@ -2,6 +2,10 @@
 
 Bloody.Core a help library for mod development. It must be installed if any mod uses it.
 
+# Sponsor this project
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K8ENRQY)
+
 # Requirements
 
 1. [BepInEx](https://thunderstore.io/c/v-rising/p/BepInEx/BepInExPack_V_Rising/)
@@ -48,7 +52,3 @@ Ping Trodi for support [V Rising Mod Community](https://discord.gg/vrisingmods)
 # Credits
 
 [V Rising Mod Community](https://discord.gg/vrisingmods) is the best community of mods for V Rising.
-
-# Support this project
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K8ENRQY)

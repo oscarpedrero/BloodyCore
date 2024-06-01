@@ -2,6 +2,8 @@
 
 Bloody.Core a help library for mod development. It must be installed if any mod uses it.
 
+# Sponsor this project
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K8ENRQY)
 
 # Requirements
