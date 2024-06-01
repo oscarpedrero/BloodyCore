@@ -14,15 +14,15 @@ namespace Bloody.Core.Patch.Server
     {
         internal static event DamageEventHandler OnDamage;
 
-        [HarmonyPatch(typeof(DealDamageSystem), nameof(DealDamageSystem.OnUpdate))]
+        [HarmonyPatch(typeof(DealDamageSystem), nameof(DealDamageSystem.DealDamage))]
         [HarmonyPostfix]
-        private static void DeathEventListenerSystemPatch_Postfix(DealDamageSystem __instance)
+        private static void DealDamageSystemPatch_Postfix(DealDamageSystem __instance)
         {
 
             Core.Logger.LogDebug($"DealDamageSystem.OnUpdate");
             try
             {
-                var damageTakenEvent = __instance._Query.ToComponentDataArray<DamageTakenEvent>(Allocator.Temp);
+                var damageTakenEvent = __instance._Query.ToComponentDataArray<DealDamageEvent>(Allocator.Temp);
 
                 OnDamage?.Invoke(__instance, damageTakenEvent);
             }

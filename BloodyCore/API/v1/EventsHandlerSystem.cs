@@ -12,7 +12,7 @@ namespace Bloody.Core.API.v1
     public delegate void OnGameDataInitializedEventHandler(World world);
     public delegate void OnGameDataDestroyedEventHandler();
     public delegate void DeathEventHandler(DeathEventListenerSystem sender, NativeArray<DeathEvent> deathEvents);
-    public delegate void DamageEventHandler(DealDamageSystem sender, NativeArray<DamageTakenEvent> damageEvents);
+    public delegate void DamageEventHandler(DealDamageSystem sender, NativeArray<DealDamageEvent> damageEvents);
     public delegate void DeathVbloodEventHandler(VBloodSystem sender, NativeList<VBloodConsumed> deathEvents);
     public delegate void GameBootstrapStartEventHandler();
     public delegate void OnUserConnectedEventHandler(ServerBootstrapSystem sender, NetConnectionId netConnectionId);
@@ -61,7 +61,7 @@ namespace Bloody.Core.API.v1
             }
         }
 
-        private static void OnDamageInvoke(DealDamageSystem sender, NativeArray<DamageTakenEvent> damageEvents)
+        private static void OnDamageInvoke(DealDamageSystem sender, NativeArray<DealDamageEvent> damageEvents)
         {
             if (OnDamage == null)
             {
@@ -71,7 +71,7 @@ namespace Bloody.Core.API.v1
             {
                 try
                 {
-                    hook.DynamicInvoke();
+                    hook.DynamicInvoke(sender, damageEvents);
                 }
                 catch (Exception e)
                 {
