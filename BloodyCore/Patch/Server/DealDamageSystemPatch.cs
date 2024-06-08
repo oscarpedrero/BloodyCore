@@ -19,7 +19,7 @@ namespace Bloody.Core.Patch.Server
         private static void DealDamageSystemPatch_Postfix(DealDamageSystem __instance)
         {
 
-            Core.Logger.LogDebug($"DealDamageSystem.OnUpdate");
+            //Core.Logger.LogDebug($"DealDamageSystem.OnUpdate");
             try
             {
                 var damageTakenEvent = __instance._Query.ToComponentDataArray<DealDamageEvent>(Allocator.Temp);

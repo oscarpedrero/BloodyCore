@@ -1,7 +1,9 @@
-﻿using Bloody.Core.Patch.Client;
+﻿using Bloody.Core.Models.v1;
+using Bloody.Core.Patch.Client;
 using Bloody.Core.Patch.Server;
 using ProjectM;
 using ProjectM.Gameplay.Systems;
+using Stunlock.Core;
 using Stunlock.Network;
 using System;
 using Unity.Collections;
@@ -14,6 +16,8 @@ namespace Bloody.Core.API.v1
     public delegate void DeathEventHandler(DeathEventListenerSystem sender, NativeArray<DeathEvent> deathEvents);
     public delegate void DamageEventHandler(DealDamageSystem sender, NativeArray<DealDamageEvent> damageEvents);
     public delegate void DeathVbloodEventHandler(VBloodSystem sender, NativeList<VBloodConsumed> deathEvents);
+    public delegate void PlayerBuffedEventHandler(UserModel player, Entity buffEntity, PrefabGUID prefabGuid);
+    public delegate void PlayerBuffRemovedEventHandler(UserModel player, Entity buffEntity, PrefabGUID prefabGuid);
     public delegate void GameBootstrapStartEventHandler();
     public delegate void OnUserConnectedEventHandler(ServerBootstrapSystem sender, NetConnectionId netConnectionId);
     public delegate void OnUserDisconnectedEventHandler(ServerBootstrapSystem sender, NetConnectionId netConnectionId, ConnectionStatusChangeReason connectionStatusReason, string extraData);
@@ -36,6 +40,8 @@ namespace Bloody.Core.API.v1
         public static event OnUnitSpawnedEventHandler OnUnitSpawned;
         public static event VampireDownedHandler OnVampireDowned;
         public static event SaveWorldEventHandler OnSaveWorld;
+        public static event PlayerBuffedEventHandler OnPlayerBuffed;
+        public static event PlayerBuffRemovedEventHandler OnPlayerBuffRemoved;
 
         static EventsHandlerSystem()
         {
@@ -58,7 +64,49 @@ namespace Bloody.Core.API.v1
                 UnitSpawnerPatch.OnUnitSpawned += OnUnitSpawnedInvoke;
                 VampireDownedPatch.OnVampireDowned += OnVampireDownedInvoke;
                 SaveSystemPatch.OnSaveWorld += OnSaveWorldInvoke;
+                BuffPatch.OnPlayerBuffed += OnPlayerBuffedInvoke;
+                BuffPatch.OnPlayerBuffRemoved += OnPlayerBuffRemovedInvoke;
             }
+        }
+
+        private static void OnPlayerBuffRemovedInvoke(UserModel player, Entity buffEntity, PrefabGUID prefabGuid)
+        {
+            if (OnPlayerBuffRemoved == null)
+            {
+                return;
+            }
+            foreach (var hook in OnPlayerBuffRemoved.GetInvocationList())
+            {
+                try
+                {
+                    hook.DynamicInvoke(player, buffEntity, prefabGuid);
+                }
+                catch (Exception e)
+                {
+                    Core.Logger.LogError(e);
+                }
+            }
+            //Core.Logger.LogDebug("OnPlayerBuffRemoved Invoke");
+        }
+
+        private static void OnPlayerBuffedInvoke(UserModel player, Entity buffEntity, PrefabGUID prefabGuid)
+        {
+            if (OnPlayerBuffed == null)
+            {
+                return;
+            }
+            foreach (var hook in OnPlayerBuffed.GetInvocationList())
+            {
+                try
+                {
+                    hook.DynamicInvoke(player, buffEntity, prefabGuid);
+                }
+                catch (Exception e)
+                {
+                    Core.Logger.LogError(e);
+                }
+            }
+            //Core.Logger.LogDebug("OnPlayerBuffed Invoke");
         }
 
         private static void OnDamageInvoke(DealDamageSystem sender, NativeArray<DealDamageEvent> damageEvents)
@@ -78,7 +126,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnDamage Invoke");
+            //Core.Logger.LogDebug("OnDamage Invoke");
         }
 
         private static void OnSaveWorldInvoke()
@@ -98,7 +146,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnSaveWorld Invoke");
+            //Core.Logger.LogDebug("OnSaveWorld Invoke");
         }
 
         private static void OnVampireDownedInvoke(VampireDownedServerEventSystem sender, NativeArray<Entity> deathEvents) // TODO: Review why dont run
@@ -118,7 +166,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnVampireDowned Invoke");
+            //Core.Logger.LogDebug("OnVampireDowned Invoke");
         }
 
         private static void OnUnitSpawnedInvoke(NativeArray<Entity> entities)
@@ -138,7 +186,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnUnitSpawned Invoke");
+            //Core.Logger.LogDebug("OnUnitSpawned Invoke");
         }
 
         private static void OnTraderPurchaseInvoke(NativeArray<Entity> entities)
@@ -158,7 +206,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnTraderPurchase Invoke");
+            //Core.Logger.LogDebug("OnTraderPurchase Invoke");
         }
 
         private static void OnUserDisconnectedInvoke(ServerBootstrapSystem sender, NetConnectionId netConnectionId, ConnectionStatusChangeReason connectionStatusReason, string extraData)
@@ -178,7 +226,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnUserDisconnected Invoke");
+            //Core.Logger.LogDebug("OnUserDisconnected Invoke");
         }
 
         private static void OnUserConnectedInvoke(ServerBootstrapSystem sender, NetConnectionId netConnectionId)
@@ -198,7 +246,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnUserConnected Invoke");
+            //Core.Logger.LogDebug("OnUserConnected Invoke");
         }
 
         private static void OnStartInvoke()
@@ -218,7 +266,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnStart Invoke");
+            //Core.Logger.LogDebug("OnStart Invoke");
         }
 
         private static void OnDeathInvoke(DeathEventListenerSystem sender, NativeArray<DeathEvent> deathEvents)
@@ -238,7 +286,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnDeath Invoke");
+            //Core.Logger.LogDebug("OnDeath Invoke");
         }
 
         private static void OnDeathVBloodInvoke(VBloodSystem sender, NativeList<VBloodConsumed> deathEvents)
@@ -258,7 +306,7 @@ namespace Bloody.Core.API.v1
                     Core.Logger.LogError(e);
                 }
             }
-            Core.Logger.LogDebug("OnDeathVBlood Invoke");
+            //Core.Logger.LogDebug("OnDeathVBlood Invoke");
         }
 
 
@@ -318,7 +366,7 @@ namespace Bloody.Core.API.v1
                 }
             }
             Core.OnCoreInitialized(world);
-            Core.Logger.LogDebug("Core initialized");
+            //Core.Logger.LogDebug("Core initialized");
         }
     }
 }

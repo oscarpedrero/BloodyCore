@@ -91,7 +91,7 @@ namespace Bloody.Core.API.v1
         public static bool BuffPlayer(Entity character, Entity user, PrefabGUID buff, int duration = DEFAULT_DURATION, bool persistsThroughDeath = false)
         {
 
-            ClearExtraBuffs(character);
+            //ClearExtraBuffs(character);
             var des = Core.SystemsCore.DebugEventsSystem;
             var buffEvent = new ApplyBuffDebugEvent()
             {

@@ -16,8 +16,8 @@ namespace Bloody.Core.Patch.Server
         {
             try
             {
-                Core.Logger.LogDebug("ServerStartupStateChange_Postfix");
-                Core.Logger.LogDebug(ServerStartupState.State.SuccessfulStartup.ToString());
+                //Core.Logger.LogDebug("ServerStartupStateChange_Postfix");
+                //Core.Logger.LogDebug(ServerStartupState.State.SuccessfulStartup.ToString());
                 if (loadState == ServerStartupState.State.SuccessfulStartup)
                 {
                     var world = VWorld.Server;

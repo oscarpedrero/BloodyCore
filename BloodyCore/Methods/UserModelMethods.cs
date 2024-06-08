@@ -51,7 +51,7 @@ namespace Bloody.Core.Methods
                 }
 
                 return false;*/
-                if(UserSystem.TryAddInventoryItemOrDrop(userModel.Entity, itemGuid, amount))
+                if(UserSystem.TryAddUserInventoryItem(userModel.Character.Entity, itemGuid, amount).Success)
                 {
                     return true;
                 }

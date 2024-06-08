@@ -69,22 +69,22 @@ namespace Bloody.Core.API.v1
 
         }
 
-        public static bool TryAddInventoryItemOrDrop(Entity user, PrefabGUID itemGuid, int stacks)
+        public static bool TryAddInventoryItemOrDrop(Entity CharacterEntity, PrefabGUID itemGuid, int stacks)
         {
-            AddItemResponse _addItemResponse = TryAddUserInventoryItem(user, itemGuid, stacks);
+            AddItemResponse _addItemResponse = TryAddUserInventoryItem(CharacterEntity, itemGuid, stacks);
             if (_addItemResponse.Success)
             {
                 return true;
             }
 
-            CreateDroppedItemEntityForUser(user, itemGuid, stacks);
+            CreateDroppedItemEntityForUser(CharacterEntity, itemGuid, stacks);
 
             return true;
         }
 
-        public static AddItemResponse TryAddUserInventoryItem(Entity user, PrefabGUID itemGuid, int stacks)
+        public static AddItemResponse TryAddUserInventoryItem(Entity CharacterEntity, PrefabGUID itemGuid, int stacks)
         {
-            return Core.SystemsCore.ServerScriptMapper._ServerGameManager.TryAddInventoryItem(user, itemGuid, stacks);
+            return Core.SystemsCore.ServerScriptMapper.GetServerGameManager().TryAddInventoryItem(CharacterEntity, itemGuid, stacks);
         }
 
         public static void CreateDroppedItemEntityForUser(Entity user, PrefabGUID itemGuid, int stacks)

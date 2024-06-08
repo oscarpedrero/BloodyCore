@@ -24,7 +24,7 @@ namespace Bloody.Core.Patch.Server
         internal static void Prefix(UnitSpawnerReactSystem __instance)
         {
 
-            Core.Logger.LogDebug($"UnitSpawnerReactSystem.OnUpdate");
+            //Core.Logger.LogDebug($"UnitSpawnerReactSystem.OnUpdate");
             try
             {
                 var _entities = __instance._Query.ToEntityArray(Allocator.Temp);
@@ -61,6 +61,7 @@ namespace Bloody.Core.Patch.Server
                 }
 
                 EnabledCallBack = false;
+
             }
             catch (Exception e)
             {

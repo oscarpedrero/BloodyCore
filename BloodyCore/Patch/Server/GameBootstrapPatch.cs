@@ -22,7 +22,7 @@ namespace Bloody.Core.Patch.Server
         [HarmonyPostfix]
         private static void Postfix()
         {
-            Core.Logger.LogDebug($"GameBootstrap.Start");
+            //Core.Logger.LogDebug($"GameBootstrap.Start");
 
             try
             {

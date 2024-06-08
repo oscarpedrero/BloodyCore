@@ -65,6 +65,7 @@ namespace Bloody.Core
             if (IsServer)
             {
                 Logger.LogInfo($"Load Systems for Server");
+                _harmony.PatchAll(typeof(ActionScheduler));
                 _harmony.PatchAll(typeof(DeathPatch));
                 _harmony.PatchAll(typeof(DealDamageSystemPatch));
                 _harmony.PatchAll(typeof(DeathVBloodPatch));
@@ -73,6 +74,8 @@ namespace Bloody.Core
                 _harmony.PatchAll(typeof(TraderPurchasePatch));
                 _harmony.PatchAll(typeof(UnitSpawnerPatch));
                 _harmony.PatchAll(typeof(SaveSystemPatch));
+                _harmony.PatchAll(typeof(BuffPatch));
+
 
                 _harmony.PatchAll(typeof(OnGameServerDataInitializedPatch));
                 OnGameServerDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;

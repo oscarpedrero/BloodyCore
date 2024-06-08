@@ -18,6 +18,16 @@ Extract Bloody.Core.dll into (VRising folder)/BepInEx/plugins.
 <details>
 <summary>Changelog</summary>
 
+`1.2.4`
+- Added Coroutine Handler
+- Added Action Scheduler
+- Fixed inventory drop system
+- Added a new Exits method to the ECS extension
+- Debug logs commented
+- Modified the buff system so that it does not clean the rest of the buffs by default
+- Added new event invocations in EventHandler (OnPlayerBuffed, OnPlayerBuffRemoved)
+- Minor performance improvements
+
 `1.2.3`
 - Add Event OnDamage
 

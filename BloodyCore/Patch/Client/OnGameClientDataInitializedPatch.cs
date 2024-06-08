@@ -32,7 +32,7 @@ namespace Bloody.Core.Patch.Client
                 }
 
                 _onCoreInitializedTriggered = true;
-                Core.Logger.LogDebug("CoreManagerOnUpdatePostfix Trigger");
+                //Core.Logger.LogDebug("CoreManagerOnUpdatePostfix Trigger");
                 OnCoreInitialized?.Invoke(__instance.World);
             }
             catch (Exception ex)

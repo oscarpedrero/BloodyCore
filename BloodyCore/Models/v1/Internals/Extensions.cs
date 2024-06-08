@@ -31,7 +31,7 @@ namespace Bloody.Core.Models.v1.Internals
             }
             catch (Exception ex)
             {
-                Core.Logger.LogDebug(ex.Message);
+                //Core.Logger.LogDebug(ex.Message);
                 return null;
             }
         }

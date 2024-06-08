@@ -18,7 +18,7 @@ namespace Bloody.Core.Patch.Server
         [HarmonyPrefix]
         internal static void Postfix(ServerBootstrapSystem __instance, NetConnectionId netConnectionId)
         {
-            Core.Logger.LogDebug($"ServerBootstrapSystem.OnUserConnected");
+            //Core.Logger.LogDebug($"ServerBootstrapSystem.OnUserConnected");
             try
             {
 
@@ -35,7 +35,7 @@ namespace Bloody.Core.Patch.Server
         internal static void Prefix(ServerBootstrapSystem __instance, NetConnectionId netConnectionId, ConnectionStatusChangeReason connectionStatusReason, string extraData)
         {
 
-            Core.Logger.LogDebug($"ServerBootstrapSystem.OnUserDisconnected");
+            //Core.Logger.LogDebug($"ServerBootstrapSystem.OnUserDisconnected");
             try
             {
                 OnUserDisconnected?.Invoke(__instance, netConnectionId, connectionStatusReason, extraData);

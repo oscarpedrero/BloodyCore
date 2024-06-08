@@ -18,7 +18,7 @@ namespace Bloody.Core.Patch.Server
         [HarmonyPrefix]
         private static void OnUpdate_Prefix(VBloodSystem __instance)
         {
-            Core.Logger.LogDebug($"VBloodSystem.OnUpdate");
+            //Core.Logger.LogDebug($"VBloodSystem.OnUpdate");
             try
             {
                 OnDeathVBlood?.Invoke(__instance, __instance.EventList);

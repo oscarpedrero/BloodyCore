@@ -18,7 +18,7 @@ namespace Bloody.Core.Patch.Server
         private static void DeathEventListenerSystemPatch_Postfix(DeathEventListenerSystem __instance)
         {
 
-            Core.Logger.LogDebug($"DeathEventListenerSystem.OnUpdate");
+            //Core.Logger.LogDebug($"DeathEventListenerSystem.OnUpdate");
             try
             {
                 var deathEvents = __instance._DeathEventQuery.ToComponentDataArray<DeathEvent>(Allocator.Temp);
