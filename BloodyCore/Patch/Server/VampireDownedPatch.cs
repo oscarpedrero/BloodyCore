@@ -12,15 +12,13 @@ namespace Bloody.Core.Patch.Server
         public static event VampireDownedHandler OnVampireDowned;
 
         [HarmonyPatch(typeof(VampireDownedServerEventSystem), nameof(VampireDownedServerEventSystem.OnUpdate))]
-        [HarmonyPostfix]
-        internal static void VampireDownedServerEventSystem_Postfix(VampireDownedServerEventSystem __instance)
+        [HarmonyPrefix]
+        internal static void Prefix(VampireDownedServerEventSystem __instance)
         {
+            var downedEvents = __instance.__query_1174204813_0.ToEntityArray(Allocator.Temp);
 
-            var vampireDownedEntitys = __instance.__query_1174204813_0.ToEntityArray(Allocator.Temp);
-            if (vampireDownedEntitys.Length > 0)
-            {
-                OnVampireDowned?.Invoke(__instance, vampireDownedEntitys);
-            }
+            OnVampireDowned?.Invoke(__instance, downedEvents);
+      
 
         }
     }

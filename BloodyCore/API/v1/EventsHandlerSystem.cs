@@ -149,7 +149,7 @@ namespace Bloody.Core.API.v1
             //Core.Logger.LogDebug("OnSaveWorld Invoke");
         }
 
-        private static void OnVampireDownedInvoke(VampireDownedServerEventSystem sender, NativeArray<Entity> deathEvents) // TODO: Review why dont run
+        private static void OnVampireDownedInvoke(VampireDownedServerEventSystem sender, NativeArray<Entity> deathEvents) 
         {
             if (OnVampireDowned == null)
             {

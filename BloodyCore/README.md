@@ -22,6 +22,7 @@ Extract Bloody.Core.dll into (VRising folder)/BepInEx/plugins.
 - Added Coroutine Handler
 - Added Action Scheduler
 - Fixed inventory drop system
+- Fixed patch VampireDownedPatch
 - Added a new Exits method to the ECS extension
 - Debug logs commented
 - Modified the buff system so that it does not clean the rest of the buffs by default

@@ -75,6 +75,7 @@ namespace Bloody.Core
                 _harmony.PatchAll(typeof(UnitSpawnerPatch));
                 _harmony.PatchAll(typeof(SaveSystemPatch));
                 _harmony.PatchAll(typeof(BuffPatch));
+                _harmony.PatchAll(typeof(VampireDownedPatch));
 
 
                 _harmony.PatchAll(typeof(OnGameServerDataInitializedPatch));
