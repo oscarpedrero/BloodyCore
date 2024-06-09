@@ -15,11 +15,11 @@ namespace Bloody.Core.API.v1
         internal const int DEFAULT_MINRANGE = 1;
         internal const int DEFAULT_MAXRANGE = 1;
 
-        public static void SpawnUnitWithCallback(Entity user, PrefabGUID unit, float2 position, float duration, Action<Entity> postActions)
+        public static void SpawnUnitWithCallback(Entity user, PrefabGUID unit, float3 position, float duration, Action<Entity> postActions)
         {
             Entity empty_entity = new Entity();
             var translation = Core.SystemsCore.EntityManager.GetComponentData<Translation>(user);
-            var f3pos = new float3(position.x, translation.Value.y, position.y);
+            var f3pos = new float3(position.x, position.z, position.y);
             var usus = Core.SystemsCore.UnitSpawnerUpdateSystem;
             UnitSpawnerPatch.EnabledCallBack = true;
             var durationKey = NextKey();
