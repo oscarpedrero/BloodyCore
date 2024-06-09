@@ -19,7 +19,7 @@ namespace Bloody.Core.API.v1
         {
             Entity empty_entity = new Entity();
             var translation = Core.SystemsCore.EntityManager.GetComponentData<Translation>(user);
-            var f3pos = new float3(position.x, position.z, position.y);
+            var f3pos = new float3(position.x, position.y, position.z);
             var usus = Core.SystemsCore.UnitSpawnerUpdateSystem;
             UnitSpawnerPatch.EnabledCallBack = true;
             var durationKey = NextKey();
