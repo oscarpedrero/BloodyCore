@@ -4,7 +4,7 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "Trodi"
 name = "BloodyCore"
-versionNumber = "1.3.0"
+versionNumber = "2.0.0"
 description = "Bloody.Core a help library for mod development. It must be installed if any mod uses it."
 websiteUrl = "https://github.com/oscarpedrero/BloodyCore"
 containsNsfwContent = false

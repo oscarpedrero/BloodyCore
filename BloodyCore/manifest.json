@@ -1,6 +1,6 @@
 ﻿{
   "name": "BloodyCore",
-  "version_number": "1.3.0",
+  "version_number": "2.0.0",
   "website_url": "https://github.com/oscarpedrero/BloodyCore",
   "description": "Bloody.Core a help library for mod development. It must be installed if any mod uses it.",
   "dependencies": [

@@ -21,6 +21,9 @@ Extract Bloody.Core.dll into (VRising folder)/BepInEx/plugins.
 <details>
 <summary>Changelog</summary>
 
+`2.0.0`
+- Updated to 1.1 VRising
+
 `1.2.4`
 - Added Coroutine Handler
 
