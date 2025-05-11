@@ -1,6 +1,10 @@
+# UPDATED TO 1.1 WP
+
+## [BepInEx 1.733.2 (RC2)](https://github.com/decaprime/VRising-Modding/releases/tag/1.733.2)
+
 # BloodyCore
 
-Bloody.Core a help library for mod development. It must be installed if any mod uses it.
+Bloody.Core a help library for mod development. It must be installed if any mod uses it. 
 
 # Sponsor this project
 
@@ -8,8 +12,7 @@ Bloody.Core a help library for mod development. It must be installed if any mod 
 
 # Requirements
 
-1. [BepInEx](https://thunderstore.io/c/v-rising/p/BepInEx/BepInExPack_V_Rising/)
-2. [Bloodstone](https://thunderstore.io/c/v-rising/p/deca/Bloodstone/)
+1. [BepInEx 1.733.2 (RC2)](https://github.com/decaprime/VRising-Modding/releases/tag/1.733.2)
 
 # Installation
 Install BepInEx.
@@ -17,6 +20,9 @@ Extract Bloody.Core.dll into (VRising folder)/BepInEx/plugins.
 
 <details>
 <summary>Changelog</summary>
+
+`1.2.4`
+- Added Coroutine Handler
 
 `1.2.4`
 - Added Coroutine Handler

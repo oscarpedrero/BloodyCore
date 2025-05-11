@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Bloodstone.API;
 using PluralizeService.Core;
 using ProjectM;
 using Unity.Entities;
@@ -12,7 +11,7 @@ namespace Bloody.Core.ClassGenerator
 {
     internal static class ClassGenerator
     {
-        private const string ModelsFolder = @"E:\MODS\BloodyCore\BloodyCore\Models\Internals";
+        private const string ModelsFolder = @"E:\MODS\BloodyCore\BloodyCore\Models\v1\Internals";
 
         public static void GenerateClasses()
         {

@@ -1,5 +1,4 @@
-﻿using Bloodstone.API;
-using Il2CppInterop.Runtime;
+﻿using Il2CppInterop.Runtime;
 using Il2CppSystem;
 using Unity.Collections;
 using Unity.Entities;

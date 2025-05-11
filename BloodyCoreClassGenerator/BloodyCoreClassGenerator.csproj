@@ -17,12 +17,11 @@
 	  <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.691" IncludeAssets="compile" />
 	  <PackageReference Include="BepInEx.Core" Version="6.0.0-be.691" IncludeAssets="compile" />
 	  <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-	  <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.*" />
+	  <PackageReference Include="VRising.Unhollowed.Client" Version="1.1.*" />
     <PackageReference Include="PluralizeService.Core" Version="1.2.21147.2" />
     <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-	  <PackageReference Include="VRising.Bloodstone" Version="0.1.*" />
   </ItemGroup>
 
  <Target Name="CopyDLLs" AfterTargets="Build">

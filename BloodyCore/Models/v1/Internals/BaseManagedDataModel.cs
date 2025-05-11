@@ -22,7 +22,7 @@ namespace Bloody.Core.Models.v1.Internals
         public ProjectM.Portrait.ServantPortraitData ServantPortraitData => _world.GetManagedComponentDataInternal<ProjectM.Portrait.ServantPortraitData>(_entityModel);
         public ProjectM.ManagedItemData ManagedItemData => _world.GetManagedComponentDataInternal<ProjectM.ManagedItemData>(_entityModel);
         public ProjectM.ManagedDataDropGroup ManagedDataDropGroup => _world.GetManagedComponentDataInternal<ProjectM.ManagedDataDropGroup>(_entityModel);
-        public ProjectM.UI.ManagedUnitBloodTypeData ManagedUnitBloodTypeData => _world.GetManagedComponentDataInternal<ProjectM.UI.ManagedUnitBloodTypeData>(_entityModel);
+        //public ProjectM.UI.ManagedUnitBloodTypeData ManagedUnitBloodTypeData => _world.GetManagedComponentDataInternal<ProjectM.UI.ManagedUnitBloodTypeData>(_entityModel);
         public ProjectM.UI.ManagedSCTTypeData ManagedSCTTypeData => _world.GetManagedComponentDataInternal<ProjectM.UI.ManagedSCTTypeData>(_entityModel);
         public ProjectM.ManagedJournalTooltip ManagedJournalTooltip => _world.GetManagedComponentDataInternal<ProjectM.ManagedJournalTooltip>(_entityModel);
         public ProjectM.FeatureCollectionComponent FeatureCollectionComponent => _world.GetManagedComponentDataInternal<ProjectM.FeatureCollectionComponent>(_entityModel);

@@ -23,7 +23,7 @@ namespace Bloody.Core.Patch.Server
             //Core.Logger.LogError($"BuffDebugSystem.OnUpdate");
             try
             {
-                NativeArray<Entity> entities = __instance.__query_401358786_0.ToEntityArray(Allocator.Temp);
+                NativeArray<Entity> entities = __instance.__query_401358787_0.ToEntityArray(Allocator.Temp);
                 foreach (var buffEntity in entities)
                 {
                     var prefabGuid = buffEntity.Read<PrefabGUID>();
@@ -59,7 +59,7 @@ namespace Bloody.Core.Patch.Server
             //Core.Logger.LogError($"UpdateBuffsBuffer_Destroy.OnUpdate");
             try
             {
-                var entities = __instance.__query_401358720_0.ToEntityArray(Allocator.Temp);
+                var entities = __instance.__query_401358717_0.ToEntityArray(Allocator.Temp);
                 foreach (var buffEntity in entities)
                 {
                     var prefabGuid = buffEntity.Read<PrefabGUID>();

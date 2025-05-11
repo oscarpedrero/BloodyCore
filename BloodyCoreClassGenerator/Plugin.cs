@@ -11,12 +11,11 @@ using Bloody.Core.ClassGenerator.Patch;
 namespace Bloody.Core.ClassGenerator
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
-    [BepInDependency("gg.deca.Bloodstone")]
     public class Plugin : BasePlugin
     {
         public const string PluginGuid = "Bloody.Core.ClassGenerator";
         public const string PluginName = "Bloody.Core.ClassGenerator";
-        public const string PluginVersion = "0.6.0";
+        public const string PluginVersion = "0.7.0";
         internal static ManualLogSource Logger { get; private set; }
         private static Harmony _harmonyInstance;
 

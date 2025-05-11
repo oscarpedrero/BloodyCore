@@ -1,5 +1,5 @@
-﻿using Bloodstone.API;
-using Bloody.Core.API.v1;
+﻿using Bloody.Core.API.v1;
+using Bloody.Core.Utils.v1;
 using HarmonyLib;
 using ProjectM;
 using System;

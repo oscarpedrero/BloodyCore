@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using Bloodstone.API;
 using ProjectM;
 using ProjectM.CastleBuilding;
 using ProjectM.Network;
@@ -23,7 +22,8 @@ namespace Bloody.Core.Methods
             {
                 return;
             }
-            ServerChatUtils.SendSystemMessageToClient(Core.World.EntityManager, userModel.Internals.User.Value, message);
+            var ref_message = (FixedString512Bytes)message;
+            ServerChatUtils.SendSystemMessageToClient(Core.World.EntityManager, userModel.Internals.User.Value, ref ref_message);
         }
 
         public static bool TryGiveItem(this UserModel userModel, PrefabGUID itemGuid, int amount, out Entity itemEntity)

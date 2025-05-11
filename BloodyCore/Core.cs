@@ -13,7 +13,6 @@ using UnityEngine;
 namespace Bloody.Core
 {
     [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-    [BepInDependency("gg.deca.Bloodstone")]
     public class Core: BasePlugin
     {
         internal static Core Instance { get; private set; }
@@ -58,6 +57,7 @@ namespace Bloody.Core
             {
                 Logger.LogInfo($"Load Systems for Client");
                 _harmony.PatchAll(typeof(OnGameClientDataInitializedPatch));
+                _harmony.PatchAll(typeof(ClientActionScheduler));
                 OnGameClientDataInitializedPatch.OnCoreInitialized += OnCoreInitialized;
                 OnGameClientDataInitializedPatch.OnCoreDestroyed += OnCoreDestroyed;
             }

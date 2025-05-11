@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
-using Bloodstone.API;
+using Bloody.Core.Utils.v1;
 using Il2CppInterop.Runtime;
 using ProjectM;
 using Stunlock.Core;
@@ -76,8 +76,8 @@ public static class ECSExtensions
     public static string LookupName(this PrefabGUID prefabGuid)
     {
         var prefabCollectionSystem = VWorld.Server.GetExistingSystemManaged<PrefabCollectionSystem>();
-        return (prefabCollectionSystem.PrefabGuidToNameDictionary.ContainsKey(prefabGuid)
-            ? prefabCollectionSystem.PrefabGuidToNameDictionary[prefabGuid] + " " + prefabGuid : "GUID Not Found").ToString();
+        return (prefabCollectionSystem._PrefabLookupMap.GuidToEntityMap.ContainsKey(prefabGuid)
+            ? prefabCollectionSystem._PrefabLookupMap.GetName(prefabGuid) + " PrefabGuid(" + prefabGuid.GuidHash + ")" : "GUID Not Found");
     }
 
     public static void Add<T>(this Entity entity)

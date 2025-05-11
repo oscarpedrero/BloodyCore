@@ -1,8 +1,8 @@
 ﻿using System;
-using Bloodstone.API;
 using HarmonyLib;
 using ProjectM;
 using Unity.Entities;
+using Bloody.Core.ClassGenerator.Utils;
 
 namespace Bloody.Core.ClassGenerator.Patch
 {

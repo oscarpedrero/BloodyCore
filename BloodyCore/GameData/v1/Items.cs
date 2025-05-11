@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bloodstone.API;
 using ProjectM;
 using Stunlock.Core;
 using Unity.Entities;
@@ -55,7 +54,7 @@ namespace Bloody.Core.GameData.v1
         private List<ItemModel> GetItemPrefabs()
         {
             var result = new List<ItemModel>();
-            var gameData = VWorld.Server.GetExistingSystemManaged<GameDataSystem>();
+            var gameData = Core.World.GetExistingSystemManaged<GameDataSystem>();
             foreach (var prefabEntity in gameData.ItemHashLookupMap.m_HashMapData.GetValueArray(Allocator.Temp))
             {
                 var itemModel = FromEntity(prefabEntity.Entity);
