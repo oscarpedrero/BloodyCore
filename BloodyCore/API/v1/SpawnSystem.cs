@@ -25,6 +25,24 @@ namespace Bloody.Core.API.v1
             usus.SpawnUnit(empty_entity, unit, f3pos, 1, DEFAULT_MINRANGE, DEFAULT_MAXRANGE, durationKey);
             UnitSpawnerPatch.PostActions.Add(durationKey, (duration, postActions));
         }
+        
+        /// <summary>
+        /// Spawns a unit at a specific 3D position with a callback after spawn
+        /// </summary>
+        /// <param name="user">Entity invoking the spawn (used for owner/faction data)</param>
+        /// <param name="unit">PrefabGUID of the unit to spawn</param>
+        /// <param name="position">3D position including custom Y coordinate</param>
+        /// <param name="duration">Lifetime of the unit in seconds (-1 for permanent)</param>
+        /// <param name="postActions">Callback to execute after unit is spawned</param>
+        public static void SpawnUnitWithCallback(Entity user, PrefabGUID unit, float3 position, float duration, Action<Entity> postActions)
+        {
+            Entity empty_entity = new Entity();
+            var usus = Core.SystemsCore.UnitSpawnerUpdateSystem;
+            UnitSpawnerPatch.EnabledCallBack = true;
+            var durationKey = NextKey();
+            usus.SpawnUnit(empty_entity, unit, position, 1, DEFAULT_MINRANGE, DEFAULT_MAXRANGE, durationKey);
+            UnitSpawnerPatch.PostActions.Add(durationKey, (duration, postActions));
+        }
 
         internal static long NextKey()
         {
